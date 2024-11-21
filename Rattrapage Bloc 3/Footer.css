@@ -1,0 +1,12 @@
+.Footer{
+    height: 120px;
+    background-color: #ffc35c;
+    margin-top: 100px;
+}
+
+.FooterTxT{
+    color: White;
+    font-family: "Open Sans";
+    margin-left: 160px;
+    padding-top: 20px;
+}
