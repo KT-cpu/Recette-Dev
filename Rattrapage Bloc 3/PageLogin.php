@@ -1,38 +1,8 @@
 <?php
-    
-   /* header("Content-Type:application/json");
+    session_start();
+?>
 
 
-    $host = "localhost";
-    $dbname = "recettedev";
-    $username = 'root';
-    $password = '';
-    $dsn = 'mysql:host=localhost;dbname=recettedev';
-
-    try {
-        $pdo = new PDO($dsn, $username, $password);
-    } catch(PDOException $e) {
-        echo 'Connexion échouée : ' . $e->getMessage();
-    }
-
-    $pseudo = $_POST["pseudo"];
-    $mdp = $_POST["mdp"];
-
-    $stmt = $pdo->prepare("SELECT * FROM user WHERE MDP=:mdp AND Pseudo=:pseudo");
-    $stmt->execute(array(':mdp' => $email, ':pseudo' => $password));
-    $count = $stmt->rowCount();
-
-    if($count > 0){
-        $json = array("status" => 200,'message' => "Success");
-    } else {
-        $json = array("status" => 300,'message' => "Error");
-    }
-
-    echo json_encode($json);
-
-    $pdo = null;*/
-
-    ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,34 +12,71 @@
     <title>Les Recettes du Programmeur</title>
     <link rel="shortcut icon" type="image/x-icon" href= "../../Rattrapage Bloc 3/Ressources/stir-fry.png">
     <link rel="stylesheet" href="PageLogin.css">
-    
 </head>
 
 <body>
-    <header>
-    </header>
+
     <main>
         <h1 class="TitreSite">Les Recettes du Programmeur</h1>
         <div class="container">
             <div class="form_area">
                 <p class="title">Login</p>
-                <form action="">
+                <form method="POST" action="login.php">
                     <div class="form_group">
                         <label class="sub_title">Pseudo</label>
-                        <input placeholder="Entrer votre pseudo" class="form_style" type="text">
+                        <input placeholder="Entrer votre pseudo" class="form_style" id="nom" type="text" name="nom" required>
                     </div>
 
                     <div class="form_group">
-                        <label class="sub_title" for="password">Mot de Passe</label>
-                        <input placeholder="Entrer votre mot de passe" id="password" class="form_style" type="password">
+                        <label class="sub_title" for="password" required>Mot de Passe</label>
+                        <input placeholder="Entrer votre mot de passe" id="password" class="form_style" type="password" name="password">
                     </div>
                     <div>
-                        <button class="btn"><a href="" class="fill-div">Connexion</a></button>
-                        <p class="account">Vous n'avez pas de compte ? <a class="link" href="PageSignIn.php">Sign in !</a></p><a class="link" href="">
-                    </a></div><a class="link" href="">
+                        <button class="btn" name="submit">Connexion</button>
+                        <p class="account">Vous n'avez pas de compte ? <a href="PageSignIn.php" class="link">Sign in !</a></p>
+                    </div>
                 
-            </a></form></div><a class="link" href="">
-        </a></div>
+            </form></div>
+        </div>
+
+        
+            <!--let form = document.querySelector("form")
+            let nom = document.getElementById("nom")
+            let mdp = document.getElementById("password")
+
+
+            function verifchamps(balise) {
+                if (balise.value === "") {
+                    balise.classList.add("error")
+                } else {
+                    balise.classList.remove("error")
+                }
+            }
+
+            function verifmdp(balise) {
+                let mdpRegExp = new RegExp("^[a-zA-Z0-9]*$")
+                if (mdpRegExp.test(balise.value)) {
+                    balise.classList.remove("error")
+                } else {
+                    balise.classList.add("error")
+                }
+            }
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault()
+                verifchamps(nom)
+                console.log(nom.value) // affiche ce qui est contenu dans la balise name
+                console.log(mdp.value)
+            })
+
+            nom.addEventListener("change", () => {
+                verifchamps(nom)
+            })
+
+            mdp.addEventListener("change", () => {
+                verifmdp(mdp)
+}) -->
+
     </main>
 
     <footer class="Footer">
