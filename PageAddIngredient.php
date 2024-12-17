@@ -1,45 +1,5 @@
 <?php 
 
-/*session_start();
-
-$MyID = $_SESSION['user_id'];
-
-
-if (isset($_POST['submit'])) {
-
-    $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
-
-    var_dump($_POST);
-
-    $name = $_POST["Nom"];
-    $cat = $_POST["Categorie"];
-
-
-    $file_name = $_FILES['image']['name'];
-    $tempname = $_FILES['image']['tmp_name'];
-    $folder = 'Images/' .$file_name;
-
-    if (empty($name) || empty($cat)) {
-
-        echo "Sign in Failed, please try again";
-        
-    } else {
-
-    $sql = "INSERT INTO checkingredients (IDUsers, Nom, File, Cat) VALUES ('$MyID', '$name', '$file_name', $cat)";
-    $req = $con->prepare($sql);
-    $req->execute();
-
-    if(move_uploaded_file($tempname, $folder)) {
-        echo "FILE UPLOADED !!!!";
-    } else {
-        echo "The file couldn't be uploaded";
-    }
-}
-} else {
-    //echo "il y a un problème...";
-    var_dump($_POST);
-}*/
-
 require_once('adding.php');
 
 ?>

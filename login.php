@@ -10,16 +10,16 @@ if (isset($_POST['submit']))
     $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
 
     if (empty($name) || empty($password)) {
-        $_SESSION['message'] = "Login failed.";
+        $_SESSION['message'] = "Login échoué, vérifiez que tous les champs soient bien remplis.";
         echo $_SESSION['message'];
-        header('Location: PageLogin.php');
+        //header('Location: PageLogin.php');
     } else {
         $sql = "SELECT * FROM user WHERE MDP = '$password' ";
         $result = $con->prepare($sql);
         $result->execute();
         $data = $result->fetch();
         
-        if ($data) {
+        if ($data > 0) {
     $_SESSION['user_id'] = $data['IDUsers'];
     $_SESSION['user_pseudo'] = $data['Pseudo'];
     $_SESSION['user_role'] = $data['Role'];
@@ -37,8 +37,6 @@ if (isset($_POST['submit']))
     }
 }
 } 
-} else {
-    echo "Aucun utilisateur trouvé.";
 }
 
 ?>

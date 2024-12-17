@@ -25,12 +25,12 @@ if (isset($_POST['submit'])) {
         
     } else {
 
-    $sql = "INSERT INTO check_ingredients (IDUsers, Nom, File, Cat) VALUES ('$MyID', '$name', '$file_name', $cat)";
+    $sql = "INSERT INTO check_ingredients (IDUsers, Nom, File, Categorie) VALUES ('$MyID', '$name', '$file_name', $cat)";
     $req = $con->prepare($sql);
     $req->execute();
 
     if(move_uploaded_file($tempname, $folder)) {
-        echo "FILE UPLOADED !!!!";
+        echo "Votre ingrédient à bien été soumis à la modération";
     } else {
         echo "The file couldn't be uploaded";
     }
