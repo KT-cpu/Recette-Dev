@@ -1,10 +1,6 @@
 <?php
-
-
-require_once('addrecipe.php');
-
+var_dump($_POST);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,7 +8,7 @@ require_once('addrecipe.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Recettes du Programmeur</title>
-    <link rel="shortcut icon" type="image/x-icon" href= "../../Rattrapage Bloc 3/Ressources/stir-fry.png">
+    <link rel="shortcut icon" type="image/x-icon" href= "../../../Ressources/stir-fry.png">
     <link rel="stylesheet" href="PageCreateRecipe.css">
     
 </head>
@@ -22,7 +18,7 @@ require_once('addrecipe.php');
 <body>
     <header>
     <div class="container">
-        <button class="Menu_Back"><a href="PageUser.php" class="fill-div"></a></button>
+        <button class="Menu_Back"><a href="http://127.0.0.1:5500/PageUser.php" class="fill-div"></a></button>
     </div>
     </header>
 
@@ -30,16 +26,20 @@ require_once('addrecipe.php');
         <div>
             <h2 class="Ingrédient">Nouvelle Recette :</h2>
         </div>
+        <div id="display-image">
+            
+                <img src="">
 
+        </div>
         <div class="FormRec">
-            <form class="Form" method='POST' enctype="multipart/form-data">
+            <form class="Form" method='post'>
               <label for="Image" class="ImageStyle">Upload</label>
-              <input type="file" id="Image" name="image" placeholder="Image">
+              <input type="file" id="Image" name="firstname" placeholder="Image">
           
-              <label for="Nom" class="H2">Ajouter le nom de la recette :</label>
+              <label for="Nom" class="Nom">Ajouter le nom de la recette :</label>
               <input type="text" id="Nom" name="Nom" placeholder="Nom de la recette">
           
-              <label for="Categorie" class="H2">Recherche des ingrédients :</label>
+              <label for="Categorie" class="Cat">Recherche des ingrédients :</label>
               <input type="text" id="Ing" name="Ing" >
               <select id="Categorie" name="Categorie">
                 <option value="">- - -</option>
@@ -53,19 +53,6 @@ require_once('addrecipe.php');
                 <option value="Matières Grasses">Matières Grasses</option>
                 <option value="Produits Transformés">Produits Transformés</option>
               </select>
-
-              <ul class="ingredient-list">
-            <?php foreach ($ingrédients as $ingredient): ?>
-                <li>
-                    <label>
-                        <input type="checkbox" name="selectedIngredients[]" value="<?= htmlspecialchars($ingredient['IDIng']) ?>">
-                        <?= htmlspecialchars($ingredient['Nom']) ?>
-                    </label>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-
-              <div class="selection" id="selectedIngredients"></div>
 
               <div class="Ingrédients">
                 <button class="Card1"><img src="" class="IMGButton1">
@@ -100,18 +87,12 @@ require_once('addrecipe.php');
                 </a></button>
             </div>
             <div>
-            <label for="TempsNec" class="H2">Temps Nécessaire :</label>
+            <label for="TempsNec" class="TempsNec">Temps Nécessaire :</label>
             <input type="time" class="Tps" name="Tps" min="00:05" max="23:59" required/>
             </div>
-
-            <div>
-            <label for="Portion" class="H2"> Portions : </label>
-            <div class="StylePortion">Pour <input type="number" class="Portion" name="Portion" min = "1" max = "20" placeholder = "0" required/> personnes</div>
-            </div>
-
             <div class="Prep">
             <div class="H2">Préparation :</div>
-            <textarea class="Desc" name="Desc" rows="5" cols="50"></textarea>
+            <textarea class="Desc" name="Desc" rows="5" cols="33"></textarea>
              </div>
              <input type="submit" value="Valider" class="Valider">
             </form>
@@ -124,18 +105,3 @@ require_once('addrecipe.php');
         </div>
     </footer>
 </body>
-
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.ingredient-list li');
-
-            // Ajoute le comportement de sélection par clic gauche
-            items.forEach(item => {
-                item.addEventListener('click', () => {
-                    const checkbox = item.querySelector('input[type="checkbox"]');
-                    checkbox.checked = !checkbox.checked;
-                    item.classList.toggle('selected', checkbox.checked);
-                });
-            });
-        });
-    </script>

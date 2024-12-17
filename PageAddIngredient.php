@@ -1,17 +1,10 @@
-<?php 
-
-require_once('adding.php');
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Recettes du Programmeur</title>
-    <link rel="shortcut icon" type="image/x-icon" href= "../../Rattrapage Bloc 3/Ressources/stir-fry.png">
+    <link rel="shortcut icon" type="image/x-icon" href= "../../../Ressources/stir-fry.png">
     <link rel="stylesheet" href="PageAddIngredient.css">
     
 </head>
@@ -19,7 +12,7 @@ require_once('adding.php');
 <body>
     <header>
     <div class="container">
-        <button class="Menu_Back"><a href="PageUser.php" class="fill-div"></a></button>
+        <button class="Menu_Back"><a href="http://127.0.0.1:5500/PageUser.php" class="fill-div"></a></button>
     </div>
     </header>
 
@@ -27,12 +20,32 @@ require_once('adding.php');
         <div>
             <h2 class="Ingrédient">Proposer un ingrédient :</h2>
         </div>
+        <div id="display-image">
+            
+                <img class="preview" src="">
+
+        </div>
+
+        <script>
+            const inputPhoto = document.getElementById('Image');
+            const image = document.getElementById('preview');
+            
+            inputPhoto.onchange = function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+            
+                reader.onload = function(e) {
+                    image.src = e.target.result;
+                };
+            
+                reader.readAsDataURL(file);
+            };
+        </script>
 
         <div class="FormIng">
-            <form method="POST" class="Form" enctype="multipart/form-data">
-            
+            <form action="#" class="Form">
               <label for="Image" class="ImageStyle">Upload</label>
-              <input type="file" id="Image" name="image" placeholder="Image">
+              <input type="file" id="Image" name="firstname" placeholder="Image" accept="image/png, image/jpeg">
               
           
               <label for="Nom"></label>
@@ -41,17 +54,18 @@ require_once('adding.php');
               <label for="Categorie" class="Cat">Sélectionnez une catégorie :</label>
               <select id="Categorie" name="Categorie">
                 <option value="">- - -</option>
-                <option value="1">Fruits</option>
-                <option value="2">Légumes</option>
-                <option value="3">Viandes</option>
-                <option value="4">Poissons</option>
-                <option value="5">Oeufs</option>
-                <option value="6">Féculents</option>
-                <option value="7">Produits laitiers</option>
-                <option value="8">Produits Transformés</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Légumes">Légumes</option>
+                <option value="Viandes">Viandes</option>
+                <option value="Poissons">Poissons</option>
+                <option value="Oeufs">Oeufs</option>
+                <option value="Féculents">Féculents</option>
+                <option value="Viandes">Produits laitiers</option>
+                <option value="Matières Grasses">Matières Grasses</option>
+                <option value="Produits Transformés">Produits Transformés</option>
               </select>
             
-              <button type="submit" name="submit" value="submit" class="Valider">Submit</button>
+              <input type="submit" value="Valider" class="Valider">
             </form>
           </div>
     </main>

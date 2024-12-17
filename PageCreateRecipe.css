@@ -15,7 +15,7 @@ body{
     width:6%;
     height:90px;
     background: #ffc35c;
-    background-image: url("../../Rattrapage Bloc 3/Ressources/back.png");
+    background-image: url("../../../Ressources/back.png");
     background-size: 70%; /* Cover the entire button */ 
     background-position: center; /* Center the image */ 
     background-repeat: no-repeat;
@@ -250,11 +250,9 @@ input[type=text], select {
     margin-left: 50px;
     font-size: 1.2em;
     text-align: center;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 20px;
-    width: 600px;
-    resize: vertical;
+    padding-left: 150px;
+    padding-right: 150px;
+    width: fit-content;
     height: fit-content;
     background-color: #f8ede3;
   }
@@ -269,36 +267,16 @@ input[type=text], select {
   }
 
   .H2{
-    padding-top: 50px;
+    padding-top: 20px;
     margin-left: 20px;
     font-family: "Open Sans";
     font-size: 1.2em;
-    padding-bottom: 30px;
-  }
-
-  .Portion{
-    display: inline;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 15px;
-    height: 40px;
-    width: 90px;
-    font-size: large;
-    border-radius:20%;
-    border-color: #f7bc58;
-    padding-left: 9px;
-    padding-right: 3px;
-  }
-
-  .StylePortion{
-    margin-left: 285px;
-    margin-top: 20px;
-    font-size: large;
+    padding-bottom: 10px;
   }
 
   .Valider{
-    margin-top: 55px;
-    margin-bottom: 25px;
+    margin-top: 60px;
+    margin-bottom: 15px;
   }
 
   .Tps{
@@ -340,27 +318,4 @@ input[type=text], select {
     font-family: "Open Sans";
     margin-left: 160px;
     padding-top: 20px;
-}
-
-
-
-
-
-.ingredient-list {
-  list-style-type: none;
-  padding: 0;
-}
-.ingredient-list li {
-  cursor: pointer;
-  padding: 5px;
-  border: 1px solid #ccc;
-  margin: 5px;
-  display: inline-block;
-  user-select: none; /* Empêche la sélection du texte */
-}
-.ingredient-list li.selected {
-  background-color: #cce5ff;
-}
-button {
-  margin-top: 20px;
 }

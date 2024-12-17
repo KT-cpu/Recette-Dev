@@ -15,7 +15,7 @@ body{
     width:7%;
     height:90px;
     background: #ffc35c;
-    background-image: url("../../Rattrapage Bloc 3/Ressources/stir-fry.png");
+    background-image: url("../../../Ressources/stir-fry.png");
     background-size: 90%; /* Cover the entire button */ 
     background-position: center; /* Center the image */ 
     background-repeat: no-repeat;
@@ -60,28 +60,16 @@ body{
     max-width: 270px;
   }
 
-  .Valider{
-    float: right;
-    position: absolute;
-    right: 423px;
-    top: 12px;
-    background-color: #000;
-    background-image: url("../../Rattrapage Bloc 3/Ressources/search.png");
-    background-size: 60%; /* Cover the entire button */ 
-    background-position: center; /* Center the image */ 
-    background-repeat: no-repeat;
-    width:45px;
-    height:50px;
-    margin-top: 20px;
-    border:none;
-    outline:none;
-  }
+  /*.Valider{
+    float:left;
+    width: 10%;
+  }*/
   
   .Menu_User{
     float: right;
     border-radius:50%;
     background-color: #f8ede3;
-    background-image: url("../../Rattrapage Bloc 3/Ressources/user.png");
+    background-image: url("../../../Ressources/user.png");
     background-size: 60%; /* Cover the entire button */ 
     background-position: center; /* Center the image */ 
     background-repeat: no-repeat;
@@ -93,26 +81,6 @@ body{
     border:none;
     outline:none;
     box-shadow: 8px 8px 0 #ffc35c;
-  }
-
-  .dropdown-content {
-    display: none;
-    right: 0%;
-    top: 110px;
-    position: absolute;
-    background-color: #f8ede3;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-
-  
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    font-family: "Open Sans";
-    display: block;
   }
 
   .H2New{
@@ -203,13 +171,6 @@ body{
     box-shadow: 8px 8px 0 #ffc35c;
   }
 
-  .IMGButton4{
-    border-radius: 35px;
-    height: 200px;
-    width: 280px;
-    margin-top: 10px;
-  }
-
 
   .Card5{
     border-radius: 35px;
@@ -222,13 +183,6 @@ body{
     box-shadow: 8px 8px 0 #ffc35c;
   }
 
-  .IMGButton5{
-    border-radius: 35px;
-    height: 200px;
-    width: 280px;
-    margin-top: 10px;
-  }
-
 
   .Card6{
     border-radius: 35px;
@@ -239,13 +193,6 @@ body{
     margin-left: 150px;
     margin-bottom: 50px;
     box-shadow: 8px 8px 0 #ffc35c;
-  }
-
-  .IMGButton6{
-    border-radius: 35px;
-    height: 200px;
-    width: 280px;
-    margin-top: 10px;
   }
 
 .title{
