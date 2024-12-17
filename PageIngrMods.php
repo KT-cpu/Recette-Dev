@@ -1,10 +1,27 @@
+<?php
+
+//require_once("afficheIng.php");
+//require_once("testdelete.php");
+
+session_start();
+
+ $id = $_GET['id'] ?? null;
+
+ // Si un ID est présent, récupère les données de l'API
+ if ($id) {
+    $data = json_decode(file_get_contents("http://localhost/Rattrapage_Bloc_3/api/IngrMods/$id"), true);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Recettes du Programmeur</title>
-    <link rel="shortcut icon" type="image/x-icon" href= "../../../Ressources/stir-fry.png">
+    <link rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="PageIngrMods.css">
     
 </head>
@@ -12,32 +29,23 @@
 <body>
     <header>
     <div class="container">
-        <button class="Menu_Back"><a href="http://127.0.0.1:5500/PageUser.php" class="fill-div"></a></button>
+        <button class="Menu_Back"><a href="PageMainMods.php" class="fill-div"></a></button>
     </div>
     </header>
 
     <main>
         <div>
-            <h2 class="Ingrédient">Proposer un ingrédient :</h2>
+        <div class="Recette">
+            <img src="Images/<?php echo $data['File'] ?>" class="IMGIng">
+            <div class="Nom"><?php echo $data['Nom'] ?></div>
+            <div class="Cat"><?php echo $data['Cat'] ?></div>
+        </div>
         </div>
         <div id="display-image">
-            
-                <img src="">
+        <button class="Valider" name="Envoyer" a href="afficherecetteMods.php">Valider</button>
 
-        </div>
-        <div class="FormIng">
-            <form action="/action_page.php" class="Form">
-              <label for="Image" class="ImageStyle">Upload</label>
-              <input type="file" id="Image" name="firstname" placeholder="Image">
+        <button class="Refuser" id="deleteButton">Refuser</button>
 
-              <div class="Nom">Oignon</div>
-          
-              <label for="Categorie" class="Cat">Catégorie :</label>
-              <div class="Catégorie">Légumes</div>
-            
-              <input type="submit" value="Valider" class="Valider">
-            </form>
-          </div>
     </main>
 
     <footer class="Footer">
@@ -46,3 +54,31 @@
         </div>
     </footer>
 </body>
+
+<script>
+document.getElementById('deleteButton').addEventListener('click', function() {
+    const id = "<?php echo $id; ?>";
+
+    if (confirm("Voulez-vous vraiment supprimer cet ingrédient ?")) {
+        fetch(`http://localhost/Rattrapage_Bloc_3/api/IngrMods/${id}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+.then(data => {
+    console.log(data); // Affiche la réponse dans la console
+    if (response.ok) {
+        alert(data.message);
+        window.location.href = 'PageMainMods.php';
+    } else {
+       // throw new Error(data.error);
+       window.location.href = 'PageMainMods.php';
+    }
+})
+.catch(error => {
+    console.error('Erreur :', error);
+    alert(error.message);
+})
+    }
+});
+
+</script>

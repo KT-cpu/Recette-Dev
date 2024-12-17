@@ -9,7 +9,6 @@ if (isset($_POST['submit'])) {
 
     $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
 
-    //var_dump($_POST);
 
     $name = $_POST["Nom"];
     $cat = $_POST["Categorie"];
@@ -32,7 +31,7 @@ if (isset($_POST['submit'])) {
     if(move_uploaded_file($tempname, $folder)) {
         echo "Votre ingrédient à bien été soumis à la modération";
     } else {
-        echo "The file couldn't be uploaded";
+        echo "Votre ingrédient à rencontrer un problème, veuillez vérifier que tous les champs sont bien remplis";
     }
 }
 } else {

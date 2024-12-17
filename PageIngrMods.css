@@ -15,7 +15,7 @@ body{
     width:6%;
     height:90px;
     background: #ffc35c;
-    background-image: url("../../../Ressources/back.png");
+    background-image: url("../../Rattrapage_Bloc_3/Ressources/back.png");
     background-size: 70%; /* Cover the entire button */ 
     background-position: center; /* Center the image */ 
     background-repeat: no-repeat;
@@ -36,114 +36,68 @@ a.fill-div {
     text-decoration: none;
 }
 
-.Ingrédient{
-    font-family: "Open Sans";
-    margin-left: 160px;
-    margin-top: 100px;
-    margin-bottom: 40px;
+.Recette{
+    border-radius: 35px;
+    height: fit-content;
+    width: 1130px;
+    background-color: #f8ede3;
+    border-color:  #f8ede3;
+    margin-left: 220px;
+    margin-top: 70px;
+    padding-bottom: 15px;
 }
 
-.Form{
-    width: 800px;
-    margin-left: 400px;
-    margin-top: 100px;
-}
+.IMGIng{
+    border-radius: 35px;
+    height: 260px;
+    width: 400px;
+    margin-top: 40px;
+    margin-left: 360px;
+  }
 
-.ImageStyle{
-    border: 1px solid #ffc35c;
-    background-color: #ffc35c;
-    font-family: "Open Sans";
-    font-size: 1.5em;
-    margin-left: 350px;
-    margin-bottom: 30px;
-    color: white;
-    height: auto;
-    width: auto;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-}
+
+.Nom{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    color: #000;
+    margin-top: 30px;
+    margin-left: 530px;
+  }
+
 
 .Cat{
+    margin-left: 470px;
+    margin-top: 80px;
     font-family: "Open Sans";
+    margin-bottom: 40px;
     font-size: 1.2em;
-    margin-left: 0px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-
-.FormIng{
-    height: fit-content;
-}
-
-label, input{
-    display: block;
-}
-
-input[type=file]{
-    display: none;
-}
-
-
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
   }
-  
-  input[type=submit] {
-    width: 50%;
+
+
+  .Valider{
+    height: 100px;
+    width: 190px;
     background-color: #ffc35c;
     color: white;
-    padding: 14px 20px;
-    margin-left: 200px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius:20%;
+    border-color: #ffc35c;
     margin-top: 70px;
-    font-family: "Open Sans";
-    font-size: 1.2em;
-  }
-  
-  input[type=submit]:hover {
-    background-color: #f7bc58;
-  }
-
-  .Nom{
-    height: 50px;
-    width: fit-content;
-    background-color: #f8ede3;
-    border-radius: 30px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 25px;
-    padding-bottom: 0px;
-    color: black;
-    margin-left: 330px;
-    margin-top: 50px;
-    font-size: larger;
+    margin-left: 420px;
+    margin-right: 50px;
+    font-size: x-large;
   }
 
 
-  .Catégorie{
-    height: 50px;
-    width: fit-content;
-    background-color: #f8ede3;
-    border-radius: 30px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 25px;
-    padding-bottom: 0px;
-    color: black;
-    margin-left: 330px;
-    margin-top: 50px;
-    font-size: larger;
+  .Refuser{
+    height: 100px;
+    width: 190px;
+    background-color: #ffc35c;
+    color: white;
+    border-radius:20%;
+    border-color: #ffc35c;
+    font-size: x-large;
+    margin-left: 270px;
   }
-
 
   
 
