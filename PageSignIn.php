@@ -1,14 +1,10 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Recettes du Programmeur</title>
-    <link rel="shortcut icon" type="image/x-icon" href= "../../Rattrapage Bloc 3/Ressources/stir-fry.png">
+    <link rel="shortcut icon" type="image/x-icon" href= "../../../Ressources/stir-fry.png">
     <link rel="stylesheet" href="PageSignIn.css">
     
 </head>
@@ -21,26 +17,27 @@
         <div class="container">
             <div class="form_area">
                 <p class="title">Sign In</p>
-                <form method="POST" action="signin.php">
+                <form action="">
                     <div class="form_group">
-                        <label class="sub_title" for="name">Pseudo</label>
-                        <input placeholder="Entre votre pseudo" class="form_style" type="text" id="nom" name="nom">
+                        <label class="sub_title" for="name">Name</label>
+                        <input placeholder="Enter your full name" class="form_style" type="text">
                     </div>
 
                     <div class="form_group">
                         <label class="sub_title" for="password">Password</label>
-                        <input placeholder="Enter your password" id="password" class="form_style" type="password" name="password">
+                        <input placeholder="Enter your password" id="password" class="form_style" type="password">
                     </div>
                     <div class="form_group">
                         <label class="sub_title" for="passwordCheck">Check Password</label>
                         <input placeholder="Enter your password" id="passwordCheck" class="form_style" type="password">
                     </div>
                     <div>
-                        <button class="btn" name="submit">Inscription</button>
-                        <p class="account">Vous avez un compte ? <a class="link" href="PageLogin.php">Log in !</a></p>
-                    </div>
-                </form></div>
-        </div>
+                        <button class="btn">Inscription</button>
+                        <p class="account">Vous avez un compte ? <a class="link" href="">Log in !</a></p><a class="link" href="">
+                    </a></div><a class="link" href="">
+                
+            </a></form></div><a class="link" href="">
+        </a></div>
     </main>
 
     <footer class="Footer">
