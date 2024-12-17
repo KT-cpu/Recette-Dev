@@ -1,0 +1,118 @@
+body{
+    background-color: #ffe1a5;
+    margin: 0;
+	padding: 0;
+}
+
+.container{
+    margin: 0;
+    width: auto;
+    height: 100px;
+}
+
+.Menu_Back{
+    border-radius:50%;
+    width:6%;
+    height:90px;
+    background: #ffc35c;
+    background-image: url("../../Rattrapage_Bloc_3/Ressources/back.png");
+    background-size: 70%; /* Cover the entire button */ 
+    background-position: center; /* Center the image */ 
+    background-repeat: no-repeat;
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+    border:none;
+    outline:none;
+    color: #ffffff;
+    margin-right:20px;
+    margin-left: 40px;
+    margin-top: 30px;
+    float:left;
+}
+
+a.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+
+.Recette{
+    border-radius: 35px;
+    height: fit-content;
+    width: 1130px;
+    background-color: #f8ede3;
+    border-color:  #f8ede3;
+    margin-left: 220px;
+    margin-top: 70px;
+    padding-bottom: 15px;
+}
+
+.IMGIng{
+    border-radius: 35px;
+    height: 260px;
+    width: 400px;
+    margin-top: 40px;
+    margin-left: 360px;
+  }
+
+
+.Nom{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    color: #000;
+    margin-top: 30px;
+    margin-left: 530px;
+  }
+
+
+.Cat{
+    margin-left: 470px;
+    margin-top: 80px;
+    font-family: "Open Sans";
+    margin-bottom: 40px;
+    font-size: 1.2em;
+  }
+
+
+  .Valider{
+    height: 100px;
+    width: 190px;
+    background-color: #ffc35c;
+    color: white;
+    border-radius:20%;
+    border-color: #ffc35c;
+    margin-top: 70px;
+    margin-left: 420px;
+    margin-right: 50px;
+    font-size: x-large;
+  }
+
+
+  .Refuser{
+    height: 100px;
+    width: 190px;
+    background-color: #ffc35c;
+    color: white;
+    border-radius:20%;
+    border-color: #ffc35c;
+    font-size: x-large;
+    margin-left: 270px;
+  }
+
+  
+
+.Footer{
+    height: 120px;
+    background-color: #ffc35c;
+    margin-top: 100px;
+    position: absolute;
+    bottom: auto;
+    width: 100%;
+}
+
+.FooterTxT{
+    color: White;
+    font-family: "Open Sans";
+    margin-left: 160px;
+    padding-top: 20px;
+}
