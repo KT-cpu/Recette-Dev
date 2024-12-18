@@ -150,17 +150,12 @@ function getIngrByID($id) {
             
                 $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
 
-                //if (isset($_GET['id'])) {
-                    //$id = $_GET['id'];
-
                     $sql = "SELECT Pseudo, Titre, Temps, Image, Portion, Description, Nom
                             FROM recette_ingredient
                             JOIN recettes ON recette_ingredient.IDRecette = recettes.IDRecette
                             JOIN user ON recettes.IDUsers = user.IDUsers
                             JOIN base_ingredients ON recette_ingredient.IDIng = base_ingredients.IDIng
                             WHERE recette_ingredient.IDRecette = :idRecette";
-
-                            /*:recipeID AND IDUser = $MyID*/
             
                     $stmt = $con->prepare($sql);
                     $stmt->bindParam(':idRecette', $id, PDO::PARAM_INT);
@@ -193,21 +188,6 @@ function getIngrByID($id) {
     }
 }
 
-
-                    /*if ($data > 0) {
-
-                        return($data);
-
-                        //echo json_encode($data);
-
-                        } else {
-                        http_response_code(404);
-                        echo json_encode(["message" => "Recette non trouvée"]);
-                        }*/
-                    //}
-
-//}
-            //}
 
 
 
@@ -613,28 +593,42 @@ function getSubmittedRecipeByID($id) {
     $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
 
 
-        $sql = "SELECT IDIng, Pseudo, Titre, Temps, File, Portion, Description
+        $sql = "SELECT Pseudo, Titre, Temps, File, Portion, Description, Nom
                         FROM check_recette_ingredient
                         JOIN check_recettes ON check_recette_ingredient.IDRecette = check_recettes.IDCheckRecette
                         JOIN user ON check_recettes.IDUsers = user.IDUsers
+                        JOIN base_ingredients ON check_recette_ingredient.IDIng = base_ingredients.IDIng
                         WHERE IDCheckRecette = :idRecette";
 
         $stmt = $con->prepare($sql);
         $stmt->bindParam(':idRecette', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        $data = $stmt->fetch();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($data) {
-
-            return($data);
-
-            } else {
-            http_response_code(404);
-            echo json_encode(["message" => "Recette non trouvée"]);
+        if ($rows) {
+            // Extraire les informations générales de la recette (première ligne)
+            $recipe = [
+                'Pseudo' => $rows[0]['Pseudo'],
+                'Titre' => $rows[0]['Titre'],
+                'Temps' => $rows[0]['Temps'],
+                'File' => $rows[0]['File'],
+                'Portion' => $rows[0]['Portion'],
+                'Description' => $rows[0]['Description'],
+                'Nom' => [] // Initialiser le tableau des ingrédients
+            ];
+    
+            // Ajouter tous les ingrédients
+            foreach ($rows as $row) {
+                $recipe['Nom'][] = $row['Nom'];
             }
-
-}
+    
+            return $recipe;
+        } else {
+            http_response_code(404);
+            return null;
+        }
+    }
 
 
 

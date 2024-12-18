@@ -50,7 +50,9 @@
             <div class="TempsPrépa"><?php echo $data['Temps'] ?></div>
             <h2 class="H2">Ingrédients :</h2>
             <div class="Ingrédients">
-                Bonjour hahaha je souffre
+                <?php foreach ($data['Nom'] as $ingredient): ?>
+                <li><?= htmlspecialchars($ingredient) ?></li>
+                <?php endforeach; ?>
             </div>
             <h2 class="H2">Préparation :</h2>
             <div class="Desc"><?php echo $data['Description'] ?></div>
@@ -58,7 +60,7 @@
         <form method="POST" action="validate.php">
         <input type="hidden" name="action" value="accepte">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <button class="Valider" name="Envoyer" a href="afficherecetteMods.php">Valider</button>
+        <button class="Valider" name="Envoyer">Valider</button>
         <form method="POST" action="delete.php">
         <input type="hidden" name="action" value="refuser">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
