@@ -1,8 +1,9 @@
 <?php 
 
-require_once('adding.php');
+//require_once('adding.php');
 
-$id = $_GET['id'] ?? null;
+$id = $_GET['id'];   //Récupération de l'id afin d'effectuer les actions
+
 
 ?>
 
@@ -53,7 +54,7 @@ $id = $_GET['id'] ?? null;
                 <option value="8">Produits Transformés</option>
               </select>
             
-              <button type="submit" name="update" value="Modifier" class="Modifier">Submit</button>
+              <input type="submit" name="update" value="Modifier" class="Modifier">Submit</input>
              <input type="hidden" name="id" value="<?php echo $id; ?>">
             </form>
           </div>

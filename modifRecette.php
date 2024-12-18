@@ -1,7 +1,11 @@
 <?php
+
+
+//Permet à l'utilisateur de modifier une recette
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
-    $id = $_POST['id'] ?? null;
+    $id = $_POST['id'];
 
 
     if ($id) {
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $stmt->bindParam(':file', $file_name);
         $stmt->execute();
 
-        // Mettre à jour les ingrédients (exemple simple : supprimer tous les anciens et insérer les nouveaux)
+        // Mettre à jour les ingrédients (supprimer tous les anciens et insérer les nouveaux)
         $stmt = $con->prepare("DELETE FROM check_recette_ingredient WHERE IDRecette = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

@@ -3,7 +3,7 @@
 
 require_once('addrecipe.php');
 
-$id = $_GET['id'] ?? null;
+$id = $_GET['id'];
 
 ?>
 
@@ -72,7 +72,7 @@ $id = $_GET['id'] ?? null;
             <div class="AddIng">Pensez à ajouter la quantité pour vos ingrédients :</div>
             <textarea class="Desc" name="Desc" rows="5" cols="50" required></textarea>
              </div>
-             <input type="submit" name="update" value="Modidier" class="Modifier">
+             <input type="submit" name="update" value="Modifier" class="Modifier">
              <input type="hidden" name="id" value="<?php echo $id; ?>">
             </form>
           </div>

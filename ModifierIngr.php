@@ -1,8 +1,10 @@
 <?php
 
+//Permet à l'utilisateur de modifier un ingrédient qu'il a soumis et qui n'a pas encore été traité par la modération
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
 
-$id = $_POST['id'] ?? null;
+$id = $_POST['id'];
 
 
 if ($id) {

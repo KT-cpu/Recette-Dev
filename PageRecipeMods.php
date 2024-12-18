@@ -1,7 +1,5 @@
 <?php
 
- //require_once("afficherecetteMods.php")
-
  session_start();
 
  $id = $_GET['id'] ?? null;
