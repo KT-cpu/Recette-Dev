@@ -42,9 +42,15 @@ session_start();
         </div>
         </div>
         <div id="display-image">
-        <button class="Valider" name="Envoyer" a href="afficherecetteMods.php">Valider</button>
+        <form method="POST" action="validateIng.php">
+        <input type="hidden" name="action" value="accepte">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <button class="Valider" name="Envoyer">Valider</button>
 
-        <button class="Refuser" id="deleteButton">Refuser</button>
+        <form method="POST" action="deleteIng.php">
+        <input type="hidden" name="action" value="delete">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <button class="Refuser" name="Delete">Refuser</button>
 
     </main>
 
@@ -54,31 +60,3 @@ session_start();
         </div>
     </footer>
 </body>
-
-<script>
-document.getElementById('deleteButton').addEventListener('click', function() {
-    const id = "<?php echo $id; ?>";
-
-    if (confirm("Voulez-vous vraiment supprimer cet ingrédient ?")) {
-        fetch(`http://localhost/Rattrapage_Bloc_3/api/IngrMods/${id}`, {
-            method: 'DELETE',
-        })
-        .then(response => response.json())
-.then(data => {
-    console.log(data); // Affiche la réponse dans la console
-    if (response.ok) {
-        alert(data.message);
-        window.location.href = 'PageMainMods.php';
-    } else {
-       // throw new Error(data.error);
-       window.location.href = 'PageMainMods.php';
-    }
-})
-.catch(error => {
-    console.error('Erreur :', error);
-    alert(error.message);
-})
-    }
-});
-
-</script>
