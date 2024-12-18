@@ -153,10 +153,11 @@ function getIngrByID($id) {
                 //if (isset($_GET['id'])) {
                     //$id = $_GET['id'];
 
-                    $sql = "SELECT IDIng, Pseudo, Titre, Temps, Image, Portion, Description
+                    $sql = "SELECT Pseudo, Titre, Temps, Image, Portion, Description, Nom
                             FROM recette_ingredient
                             JOIN recettes ON recette_ingredient.IDRecette = recettes.IDRecette
                             JOIN user ON recettes.IDUsers = user.IDUsers
+                            JOIN base_ingredients ON recette_ingredient.IDIng = base_ingredients.IDIng
                             WHERE recette_ingredient.IDRecette = :idRecette";
 
                             /*:recipeID AND IDUser = $MyID*/
@@ -166,9 +167,34 @@ function getIngrByID($id) {
                     $stmt->execute();
             
                     //$data = $stmt->fetch(PDO::FETCH_ASSOC);
-                    $data = $stmt->fetch();
+                    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    if ($data > 0) {
+    if ($rows) {
+        // Extraire les informations générales de la recette (première ligne)
+        $recipe = [
+            'Pseudo' => $rows[0]['Pseudo'],
+            'Titre' => $rows[0]['Titre'],
+            'Temps' => $rows[0]['Temps'],
+            'Image' => $rows[0]['Image'],
+            'Portion' => $rows[0]['Portion'],
+            'Description' => $rows[0]['Description'],
+            'Nom' => [] // Initialiser le tableau des ingrédients
+        ];
+
+        // Ajouter tous les ingrédients
+        foreach ($rows as $row) {
+            $recipe['Nom'][] = $row['Nom'];
+        }
+
+        return $recipe;
+    } else {
+        http_response_code(404);
+        return null;
+    }
+}
+
+
+                    /*if ($data > 0) {
 
                         return($data);
 
@@ -177,9 +203,10 @@ function getIngrByID($id) {
                         } else {
                         http_response_code(404);
                         echo json_encode(["message" => "Recette non trouvée"]);
-                        }
+                        }*/
+                    //}
 
-}
+//}
             //}
 
 
@@ -425,98 +452,6 @@ function getIngrByID($id) {
 }
 
 
-
-
-function getLatestSubmittedIngr1() {
-
-    try{
-    
-    $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
-
-    $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers ORDER BY IDCheckIng ASC";
-    $result = $con->prepare($sql);
-    $result->execute();
-    $data = $result->fetch();
-
-    if ($data) {
-        return($data);
-
-    } else {
-
-    echo json_encode(['error' => 'Aucune recette trouvée']);
-    http_response_code(404); // Pas de données disponibles
-
-}
-} catch (PDOException $e) {
-
-echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
-http_response_code(500); // Erreur serveur
-
-}
-}
-
-
-
-function getLatestSubmittedIngr2() {
-
-    try{
-    
-    $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
-
-    $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers ORDER BY IDCheckIng ASC LIMIT 1, 1";
-    $result = $con->prepare($sql);
-    $result->execute();
-    $data = $result->fetch();
-
-    if ($data) {
-        return($data);
-
-    } else {
-
-    echo json_encode(['error' => 'Aucune recette trouvée']);
-    http_response_code(404); // Pas de données disponibles
-
-}
-} catch (PDOException $e) {
-
-echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
-http_response_code(500); // Erreur serveur
-
-}
-}
-
-
-
-function getLatestSubmittedIngr3() {
-
-    try{
-    
-    $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
-
-    $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers ORDER BY IDCheckIng ASC LIMIT 2, 1";
-    $result = $con->prepare($sql);
-    $result->execute();
-    $data = $result->fetch();
-
-    if ($data) {
-        return($data);
-
-    } else {
-
-    echo json_encode(['error' => 'Aucune recette trouvée']);
-    http_response_code(404); // Pas de données disponibles
-
-}
-} catch (PDOException $e) {
-
-echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
-http_response_code(500); // Erreur serveur
-
-}
-}
-
-
-
            
 
         function getLatestSubmittedRecipe2() {
@@ -579,7 +514,7 @@ http_response_code(500); // Erreur serveur
         }
 
 
-
+        
         function getLatestSubmittedIngredient1() {
 
             try{
@@ -908,6 +843,102 @@ function getSubmittedRecipeByID($id) {
 
 }
         }
+
+
+
+
+        function getLatestSubmittedIngr1($id) {
+
+            try{
+            
+            $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
+        
+            $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers WHERE check_ingredients.IDUsers = :myID ORDER BY IDCheckIng ASC";
+            $result = $con->prepare($sql);
+            $result->bindParam(':myID', $id, PDO::PARAM_INT);
+            $result->execute();
+            $data = $result->fetch();
+        
+            if ($data) {
+                
+                return($data);
+        
+            } else {
+        
+            echo json_encode(['error' => 'Aucune recette trouvée']);
+            http_response_code(404); // Pas de données disponibles
+        
+        }
+        } catch (PDOException $e) {
+        
+        echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
+        http_response_code(500); // Erreur serveur
+        
+        }
+        }
+        
+        
+        
+        function getLatestSubmittedIngr2($id) {
+        
+            try{
+            
+            $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
+        
+            $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers WHERE check_ingredients.IDUsers = :myID ORDER BY IDCheckIng ASC LIMIT 1, 1";
+            $result = $con->prepare($sql);
+            $result->bindParam(':myID', $id, PDO::PARAM_INT);
+            $result->execute();
+            $data = $result->fetch();
+        
+            if ($data) {
+                return($data);
+        
+            } else {
+        
+            echo json_encode(['error' => 'Aucune recette trouvée']);
+            http_response_code(404); // Pas de données disponibles
+        
+        }
+        } catch (PDOException $e) {
+        
+        echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
+        http_response_code(500); // Erreur serveur
+        
+        }
+        }
+        
+        
+        
+        function getLatestSubmittedIngr3($id) {
+        
+            try{
+            
+            $con = new PDO("mysql:host=localhost;dbname=recettedev", 'root', '');
+        
+            $sql = "SELECT Nom, IDCheckIng, Pseudo, File, Categorie FROM check_ingredients JOIN user ON check_ingredients.IDUsers = user.IDUsers WHERE check_ingredients.IDUsers = :myID ORDER BY IDCheckIng ASC LIMIT 2, 1";
+            $result = $con->prepare($sql);
+            $result->bindParam(':myID', $id, PDO::PARAM_INT);
+            $result->execute();
+            $data = $result->fetch();
+        
+            if ($data) {
+                return($data);
+        
+            } else {
+        
+            echo json_encode(['error' => 'Aucune recette trouvée']);
+            http_response_code(404); // Pas de données disponibles
+        
+        }
+        } catch (PDOException $e) {
+        
+        echo json_encode(['error' => 'Erreur de connexion à la base de données', 'message' => $e->getMessage()]);
+        http_response_code(500); // Erreur serveur
+        
+        }
+        }
+        
 
 
 

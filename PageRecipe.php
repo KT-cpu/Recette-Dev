@@ -1,5 +1,7 @@
 <?php
  
+ session_start();
+
  $id = $_GET['id'] ?? null;
 
  // Si un ID est présent, récupère les données de l'API
@@ -30,11 +32,16 @@
     <div class="dropdown">
         <button class="Menu_User"><a href="PageUser.php" class="fill-div"></a></button>
         <div class="dropdown-content">
+        <?php if ($_SESSION['user_role'] === 2): ?>
             <a href="PageUser.php">Mon Espace</a>
             <!--<a href="PageCreateRecipe.php">Modifier ma recette</a>-->
             <a href="PageCreateRecipe.php">Créer une recette</a>
             <a href="PageAddIngredient.php">Ajouter un ingrédient</a>
-            <a href="index.php">Déconnexion</a>
+            <a href="PageMainDeco.php" action="disconnect.php">Déconnexion</a>
+            <?php else: ?>
+                <a href="PageLogin.php">Connexion</a>
+            <a href="PageSignIn.php">Inscription</a>
+            <?php endif; ?>
     </div>
     </header>
     <main>
@@ -48,7 +55,9 @@
             <div class="TempsPrépa"><?php echo $data['Temps'] ?></div>
             <h2 class="H2">Ingrédients :</h2>
             <div class="Ingrédients">
-                Bonjour hahaha je souffre
+                <?php foreach ($data['Nom'] as $ingredient): ?>
+                <li><?= htmlspecialchars($ingredient) ?></li>
+                <?php endforeach; ?>
             </div>
             <h2 class="H2">Préparation :</h2>
             <div class="Desc"><?php echo $data['Description'] ?></div>
